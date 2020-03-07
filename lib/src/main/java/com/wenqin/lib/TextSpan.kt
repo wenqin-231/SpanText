@@ -7,15 +7,18 @@ import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
+import android.view.View
 import androidx.annotation.ColorInt
 
-class TextSpan(val text: String) {
+class TextSpan(private val text: String) {
+
     var bold: Boolean = false
     var textSize: Int? = null
 
     @ColorInt
     var textColor: Int? = null
     var underline: Boolean = false
+    var clickListener: ((View) -> Unit)? = null
 
     fun toSpannableString(): SpannableString {
         return SpannableString(text).apply {
@@ -30,6 +33,9 @@ class TextSpan(val text: String) {
             }
             if (underline) {
                 setSpan(UnderlineSpan())
+            }
+            clickListener?.let {
+                setSpan(ColorClickSpan(it))
             }
         }
     }

@@ -12,7 +12,9 @@ class Builder {
         spans.add(textSpan)
     }
 
-    fun createBuilder(): SpannableStringBuilder {
+    fun hasClickSpan(): Boolean = spans.find { it.clickListener != null } != null
+
+    fun createStringBuilder(): SpannableStringBuilder {
         return SpannableStringBuilder().apply {
             spans.forEachIndexed { _, span ->
                 append(span.toSpannableString())
