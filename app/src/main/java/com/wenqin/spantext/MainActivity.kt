@@ -20,10 +20,17 @@ class MainActivity : AppCompatActivity() {
                 textColor = ContextCompat.getColor(this@MainActivity, R.color.colorPrimary)
                 bold = true
             }
+            append("2020") {
+                textSize = 10
+                superscript = true
+                bold = true
+                textColor = Color.BLACK
+            }
             append("\n")
             append("最爱在星空下做") {
                 textSize = 12
                 textColor = Color.GRAY
+                strikethrough = true
             }
             append("黄粱美梦") {
                 textSize = 12
@@ -32,6 +39,12 @@ class MainActivity : AppCompatActivity() {
                 clickListener = {
                     Toast.makeText(this@MainActivity, "暴富啦！", Toast.LENGTH_SHORT).show()
                 }
+            }
+            append("\n")
+            append("\n")
+            append("梦境最终代替不了现实") {
+                textColor = Color.WHITE
+                backgroundColor = ContextCompat.getColor(this@MainActivity, R.color.colorAccent)
             }
         }
     }
